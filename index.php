@@ -36,6 +36,9 @@
                 case 'relatorios':
                     include ("paginas/registros/relatorios.php");
                     break;
+                case 'inserir_chamado':
+                    include("paginas/registros/inserir_chamado.php");
+                    break;
                 
             }
         ?>
