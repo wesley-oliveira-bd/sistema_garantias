@@ -33,6 +33,9 @@
                 case 'dados_fiscais':
                     include ("paginas/registros/dados_fiscais.php");
                     break;
+                case 'editar_dados_fiscais':
+                    include("paginas/registros/editar_dados_fiscais.php");
+                    break;
                 case 'relatorios':
                     include ("paginas/registros/relatorios.php");
                     break;

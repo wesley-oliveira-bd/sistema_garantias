@@ -24,6 +24,10 @@
         <input type="date" name="data_os" id="data_os">
     </div>
     <div>
+        <label for="oficina" name="oficina">Oficina: </label>
+        <input type="text" name="oficina" id="oficina">
+    </div>
+    <div>
         <label for="valor_venda" name="valor_venda">Valor peça: </label>
         <input type="number" name="valor_venda" id="valor_venda">
     </div>
@@ -74,6 +78,6 @@
     <div>
         <input type="submit" value="Salvar" name="btn_salvar">
     </div>
-</form>
+    </form>
 
 </div>

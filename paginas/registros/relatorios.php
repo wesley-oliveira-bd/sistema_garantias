@@ -20,7 +20,20 @@
     </thead>
     <tbody>
     <?php
-        $sql = "SELECT * FROM registros";
+        $sql = "SELECT 
+        id,
+        upper(nome_cliente) AS nome_cliente,
+        cod_item,
+        upper(num_fabricante) AS num_fabricante,
+        quant,
+        upper(fornecedor) AS fornecedor,
+        nf_garantia,
+        DATE_FORMAT(data_saida, '%d/%m/%Y') AS data_saida,
+        upper(status) AS status,
+        nf_retorno,
+        valor_venda
+        FROM registros";
+
         $rs = mysqli_query($conexao, $sql) or die("Erro ao executar a consulta" . mysqli_error($conexao));
         while($dados=mysqli_fetch_assoc($rs)){
 
@@ -36,7 +49,7 @@
             <td><?=$dados["data_saida"] ?></td>
             <td><?=$dados["status"] ?></td>
             <td><?=$dados["nf_retorno"] ?></td>
-            <td><?=$dados["valor_venda"] ?></td>
+            <td>R$ <?=number_format($dados['valor_venda'], 2, ',', '.') ?></td>
         </tr>
 
     <?php } ?>
