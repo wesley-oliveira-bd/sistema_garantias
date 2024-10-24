@@ -50,7 +50,7 @@
             <td><?=$dados["status"] ?></td>
             <td><?=$dados["nf_retorno"] ?></td>
             <td>R$ <?=number_format($dados['valor_venda'], 2, ',', '.') ?></td>
-            <td><a href="index.php?menuop=editar_dados_fiscais">editar</a></td>
+            <td><a href="index.php?menuop=editar_dados_fiscais&id=<?=$dados["id"]?>">editar</a></td>
         </tr>
 
     <?php } ?>

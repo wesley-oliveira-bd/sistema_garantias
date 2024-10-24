@@ -14,7 +14,8 @@
         <nav>
             <a href="index.php?menuop=home">Home</a> |
             <a href="index.php?menuop=abrir_chamado">Abrir Chamado</a> |
-            <a href="index.php?menuop=dados_fiscais">Inserir Dados Fiscais</a> |
+            <a href="index.php?menuop=editar_chamado">Editar Chamado</a> |
+            <a href="index.php?menuop=editar_dados_fiscais">Inserir Dados Fiscais</a> |
             <a href="index.php?menuop=relatorios">Relatórios</a>
 
         </nav>
@@ -30,11 +31,20 @@
                 case 'abrir_chamado':
                     include ("paginas/registros/abrir_chamado.php");
                     break;
+                case 'editar_chamado':
+                    include("paginas/registros/editar_chamado.php");
+                    break;
+                case 'atualizar_chamado':
+                    include("paginas/registros/atualizar_chamado.php");
+                    break;
                 case 'dados_fiscais':
                     include ("paginas/registros/dados_fiscais.php");
                     break;
                 case 'editar_dados_fiscais':
                     include("paginas/registros/editar_dados_fiscais.php");
+                    break;
+                case 'inserir_dados_fiscais':
+                    include("paginas/registros/inserir_dados_fiscais.php");
                     break;
                 case 'relatorios':
                     include ("paginas/registros/relatorios.php");

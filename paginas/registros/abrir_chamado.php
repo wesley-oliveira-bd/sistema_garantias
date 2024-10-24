@@ -81,3 +81,9 @@
     </form>
 
 </div>
+
+<script>
+    // Preenche o campo "data_abertura" com a data atual
+    const hoje = new Date().toISOString().split('T')[0];
+    document.getElementById('data_abertura').value = hoje;
+</script>
