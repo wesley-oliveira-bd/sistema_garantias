@@ -52,6 +52,9 @@
                 case 'inserir_chamado':
                     include("paginas/registros/inserir_chamado.php");
                     break;
+                case 'excluir_registro':
+                    include("paginas/registros/excluir_registro.php");
+                    break;
                 
             }
         ?>

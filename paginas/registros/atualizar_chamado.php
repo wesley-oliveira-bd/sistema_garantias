@@ -48,6 +48,6 @@ $sql = "UPDATE registros SET
 
 mysqli_query($conexao, $sql) or die ("Erro ao realizar a consulta." . mysqli_error($conexao));
 
-echo "O registro foi atualizado com sucesso.";
+echo "O registro de <strong>ID {$id}</strong> foi atualizado com sucesso.";
 
 ?>
