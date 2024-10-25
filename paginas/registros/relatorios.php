@@ -27,7 +27,13 @@
         </tr>
     </thead>
     <tbody>
+
     <?php
+
+        $quantidade = 10;
+        $pagina = (isset($_GET["pagina"])?(int)$_GET["pagina"]:1);
+        $inicio = ($quantidade * $pagina)-$quantidade;
+
         $txt_pesquisa = (isset($_POST["txt_pesquisa"]))?$_POST["txt_pesquisa"]:"";
         $nfs_a_emitir = isset($_POST["nfs_a_emitir"]) ? $_POST["nfs_a_emitir"] : "";
         $filtro_nfs = isset($_POST["filtro_nfs"]) ? $_POST["filtro_nfs"] : "";
@@ -44,11 +50,13 @@
         upper(status) AS status,
         nf_retorno,
         valor_venda
-        FROM registros";
+        FROM registros
+        
+        ";
 
         if ($nfs_a_emitir) {
             // Filtro para registros com NF Garantia vazia ou igual a "0"
-            $sql .= " WHERE (nf_garantia = '' OR nf_garantia = '0') AND fornecedor LIKE '%{$filtro_nfs}%'";
+            $sql .= " WHERE (nf_garantia = '' OR nf_garantia = '0') AND fornecedor LIKE '%{$filtro_nfs}%' LIMIT $inicio, $quantidade";
         } else {
             // Filtro de pesquisa normal
             $sql .= " WHERE 
@@ -57,7 +65,8 @@
                 OR cod_item LIKE '%{$txt_pesquisa}%'
                 OR num_fabricante LIKE '%{$txt_pesquisa}%'
                 OR fornecedor LIKE '%{$txt_pesquisa}%'
-                OR status LIKE '%{$txt_pesquisa}%'";
+                OR status LIKE '%{$txt_pesquisa}%'
+                LIMIT $inicio, $quantidade";
         }
 
         $rs = mysqli_query($conexao, $sql) or die("Erro ao executar a consulta" . mysqli_error($conexao));
@@ -84,7 +93,39 @@
     </tbody>
     
 </table>
+<br>
 
 <?php
+    //parte da paginação
+    $sqlTotal = "SELECT id FROM registros";
+    $qrTotal = mysqli_query($conexao, $sqlTotal) or die (mysqli_error($conexao));
+    $numTotal = mysqli_num_rows($qrTotal);
+    $totalPaginas = ceil($numTotal/$quantidade);
+    echo "Total de registros: $numTotal";
+    echo "<br>";
+    echo '<a href="?menuop=relatorios&pagina=1">Primeira página</a>';        
 
+    if($pagina>6){
+        ?>
+            <a href="?menuop=relatorios&pagina=<?php echo $pagina-1 ?>"> << </a>
+        <?php
+    }
+
+    for($i=1; $i<=$totalPaginas; $i++){
+        if($i>=($pagina-5) && $i<=($pagina+5)){
+            if($i==$pagina){
+                echo $i;
+            } else {
+                echo "<a href=\"?menuop=relatorios&pagina=$i\">$i</a> ";
+            }
+        }
+    }
+
+    if($pagina<($totalPaginas-5)){
+        ?>
+            <a href="?menuop=relatorios&pagina=<?php echo $pagina+1 ?>"> >> </a>
+        <?php
+    }
+
+    echo "<a href=\"?menuop=relatorios&pagina=$totalPaginas\">Última página página</a>";
 ?>
