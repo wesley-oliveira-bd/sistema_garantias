@@ -28,7 +28,7 @@
 <form method="POST" action="">
     <label for="informar_id">Informe o ID: </label>
     <input type="number" name="informar_id" id="informar_id">
-    <input type="submit" value="Pesquisar">
+    <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
 </form>
 
 <?php if (!empty($dados)): ?> <!-- Exibe o formulário somente se $dados estiver preenchido -->
@@ -99,7 +99,7 @@
         <input type="text" name="observ" id="observ" value="<?=$dados["observ"]?>">
     </div>
     <div>
-        <input type="submit" value="Salvar" name="btn_salvar">
+        <button class="btn btn-outline-success btn-sm" type="submit"> Salvar</button>
     </div>
 
 </form>
