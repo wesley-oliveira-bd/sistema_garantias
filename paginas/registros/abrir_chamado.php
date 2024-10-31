@@ -12,7 +12,7 @@
             <label class="form-label" for="cod_cliente" name="cod_cliente">Cod. cliente: </label>
             <input class="form-control" type="text" name="cod_cliente" id="cod_cliente">
         </div>
-        <div class="col">
+        <div class="col-md-8">
             <label class="form-label" for="nome_cliente" name="nome_cliente">Nome cliente: </label>
             <input class="form-control" type="text" name="nome_cliente" id="nome_cliente">
         </div>
@@ -95,13 +95,13 @@
             <label class="form-label" for="km_defeito" name="km_defeito">KM defeito: </label>
             <input class="form-control" type="number" name="km_defeito" id="km_defeito">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 mb-3">
             <label class="form-label" for="defeito" name="defeito">Defeito: </label>
             <input class="form-control" type="text" name="defeito" id="defeito">
         </div>
-        <div>
-        <button class="btn btn-outline-success btn-sm" type="submit">Salvar</button>
-        </div>
+    </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
     </div>
     </form>
 

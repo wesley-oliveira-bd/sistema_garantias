@@ -12,70 +12,72 @@
     <link rel="stylesheet" href="css/estilo-padrao.css">
     <title>Sistema de Controle de Garantias</title>
 </head>
-<body>
-    <header class="bg-dark">
-        <div class="container">
-            <h1>Sistema de Controle de Garantias 1.0</h1>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=abrir_chamado">Abrir Chamado</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_chamado">Editar Chamado</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_dados_fiscais">Inserir Dados Fiscais</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=relatorios">Relatórios</a></li>
-                    </ul>
-                </div>
-                
-                
-                
-                
-                
-            </nav>
-        </div>
-    </header>
-    <main>
-    
-        <div class="container">
-            <?php
-                $menuop = (isset($_GET["menuop"]))?$_GET["menuop"]:"home";
-                switch($menuop){
-                    case 'home':
-                        include ("paginas/home/home.php");
-                        break;
-                    case 'abrir_chamado':
-                        include ("paginas/registros/abrir_chamado.php");
-                        break;
-                    case 'editar_chamado':
-                        include("paginas/registros/editar_chamado.php");
-                        break;
-                    case 'atualizar_chamado':
-                        include("paginas/registros/atualizar_chamado.php");
-                        break;
-                    case 'dados_fiscais':
-                        include ("paginas/registros/dados_fiscais.php");
-                        break;
-                    case 'editar_dados_fiscais':
-                        include("paginas/registros/editar_dados_fiscais.php");
-                        break;
-                    case 'inserir_dados_fiscais':
-                        include("paginas/registros/inserir_dados_fiscais.php");
-                        break;
-                    case 'relatorios':
-                        include ("paginas/registros/relatorios.php");
-                        break;
-                    case 'inserir_chamado':
-                        include("paginas/registros/inserir_chamado.php");
-                        break;
-                    case 'excluir_registro':
-                        include("paginas/registros/excluir_registro.php");
-                        break;
-            
-                }
-            ?>
-        </div>
-    </main>
-    <footer class="container-fluid bg-dark">
+<body class="d-flex flex-column min-vh-100">
+    <div class="flex-grow-1">
+        <header class="bg-dark">
+            <div class="container">
+                <h1>Sistema de Controle de Garantias 1.0</h1>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=abrir_chamado">Abrir Chamado</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_chamado">Editar Chamado</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_dados_fiscais">Inserir Dados Fiscais</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=relatorios">Relatórios</a></li>
+                        </ul>
+                    </div>
+        
+        
+        
+        
+        
+                </nav>
+            </div>
+        </header>
+        <main>
+        
+            <div class="container">
+                <?php
+                    $menuop = (isset($_GET["menuop"]))?$_GET["menuop"]:"home";
+                    switch($menuop){
+                        case 'home':
+                            include ("paginas/home/home.php");
+                            break;
+                        case 'abrir_chamado':
+                            include ("paginas/registros/abrir_chamado.php");
+                            break;
+                        case 'editar_chamado':
+                            include("paginas/registros/editar_chamado.php");
+                            break;
+                        case 'atualizar_chamado':
+                            include("paginas/registros/atualizar_chamado.php");
+                            break;
+                        case 'dados_fiscais':
+                            include ("paginas/registros/dados_fiscais.php");
+                            break;
+                        case 'editar_dados_fiscais':
+                            include("paginas/registros/editar_dados_fiscais.php");
+                            break;
+                        case 'inserir_dados_fiscais':
+                            include("paginas/registros/inserir_dados_fiscais.php");
+                            break;
+                        case 'relatorios':
+                            include ("paginas/registros/relatorios.php");
+                            break;
+                        case 'inserir_chamado':
+                            include("paginas/registros/inserir_chamado.php");
+                            break;
+                        case 'excluir_registro':
+                            include("paginas/registros/excluir_registro.php");
+                            break;
+        
+                    }
+                ?>
+            </div>
+        </main>
+    </div>
+    <footer class="container-fluid fixed-bottom blockquote-footer bg-dark">
         <div class="text-center">Desenvolvido por Wesley de Oliveira</div>
     </footer>
 

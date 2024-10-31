@@ -6,3 +6,9 @@ body {
 .tabela {
     margin-top: 10px;
 }
+
+.bordered {
+    border: 2px solid #28a745; /* Altere a cor e espessura conforme desejado */
+    padding: 10px; /* Adicione um pouco de espaçamento interno */
+    border-radius: 5px; /* Deixe os cantos arredondados, se preferir */
+}
