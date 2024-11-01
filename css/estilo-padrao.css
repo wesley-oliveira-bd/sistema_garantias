@@ -12,3 +12,9 @@ body {
     padding: 10px; /* Adicione um pouco de espaçamento interno */
     border-radius: 5px; /* Deixe os cantos arredondados, se preferir */
 }
+
+.certificado {
+    border: 2px solid #fff; /* Altere a cor e a espessura da borda conforme desejar */
+    padding: 15px; /* Adicione um espaçamento interno para dar um visual melhor */
+    border-radius: 5px; /* Deixe a borda com cantos arredondados */
+}

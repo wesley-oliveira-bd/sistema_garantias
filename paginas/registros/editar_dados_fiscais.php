@@ -1,26 +1,33 @@
 <?php
-    // Verifica se o ID foi enviado via POST e se não está vazio
-    if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
-        $id = $_POST['informar_id']; // Captura o ID informado
+// Função para formatar a data
+function formatarData($data) {
+    $dataObj = DateTime::createFromFormat('Y-m-d', $data);
+    return $dataObj ? $dataObj->format('d/m/Y') : '';
+}
 
-        // Proteção contra injeção de SQL
-        $id = mysqli_real_escape_string($conexao, $id);
+// Verifica se o ID foi enviado via POST e se não está vazio
+if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
+    $id = $_POST['informar_id']; // Captura o ID informado
 
-        // Query para buscar o registro com o ID informado
-        $sql = "SELECT * FROM registros WHERE id={$id}";
-        $rs = mysqli_query($conexao, $sql) or die("Erro ao recuperar dados: " . mysqli_error($conexao));
+    // Proteção contra injeção de SQL
+    $id = mysqli_real_escape_string($conexao, $id);
 
-        // Verifica se encontrou o registro
-        if (mysqli_num_rows($rs) > 0) {
-            $dados = mysqli_fetch_assoc($rs); // Armazena os dados do registro
-        } else {
-            echo "Registro não encontrado.";
-            $dados = []; // Define um array vazio para evitar o erro
-        }
+    // Query para buscar o registro com o ID informado
+    $sql = "SELECT * FROM registros WHERE id={$id}";
+    $rs = mysqli_query($conexao, $sql) or die("Erro ao recuperar dados: " . mysqli_error($conexao));
+
+    // Verifica se encontrou o registro
+    if (mysqli_num_rows($rs) > 0) {
+        $dados = mysqli_fetch_assoc($rs); // Armazena os dados do registro
     } else {
-        $dados = []; // Inicializa a variável como um array vazio caso não haja pesquisa
+        echo "Registro não encontrado.";
+        $dados = []; // Define um array vazio para evitar erro
     }
+} else {
+    $dados = []; // Inicializa a variável como um array vazio caso não haja pesquisa
+}
 ?>
+
 <header>
     <h3>Editar Dados Fiscais</h3>
 </header>
@@ -37,15 +44,15 @@
     <div class="row">
         <div class="col-md-2">
             <label class="form-label" for="id" name="id">ID: </label>
-            <input class="form-control" type="number" name="id" id="id" value="<?=$dados["id"]?>">
+            <input class="form-control" type="number" name="id" id="id" readonly value="<?=$dados["id"]?>">
         </div>
         <div class="col-md-2">
             <label class="form-label"  for="cod_item" name="cod_item">Cod. peça: </label>
-            <input class="form-control" type="number" name="cod_item" id="cod_item" value="<?=$dados["cod_item"]?>">
+            <input class="form-control" type="number" name="cod_item" id="cod_item" readonly value="<?=$dados["cod_item"]?>">
         </div>
         <div class="col-md-2">
             <label class="form-label"  for="num_fabricante" name="num_fabricante">Número fabricante: </label>
-            <input class="form-control" type="text" name="num_fabricante" id="num_fabricante" value="<?=$dados["num_fabricante"]?>">
+            <input class="form-control" type="text" name="num_fabricante" id="num_fabricante" readonly value="<?=$dados["num_fabricante"]?>">
         </div>
     </div>
 

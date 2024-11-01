@@ -25,6 +25,7 @@
                             <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_chamado">Editar Chamado</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.php?menuop=editar_dados_fiscais">Inserir Dados Fiscais</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.php?menuop=relatorios">Relatórios</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.php?menuop=certificado">Certificado</a></li>
                         </ul>
                     </div>
         
@@ -71,18 +72,22 @@
                         case 'excluir_registro':
                             include("paginas/registros/excluir_registro.php");
                             break;
+                        case 'certificado':
+                            include("paginas/registros/certificado.php");
+                            break;
         
                     }
                 ?>
             </div>
         </main>
     </div>
-    <footer class="container-fluid fixed-bottom blockquote-footer bg-dark">
+    <footer class="container-fluid bg-dark">
         <div class="text-center">Desenvolvido por Wesley de Oliveira</div>
     </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="js/validate.js"></script>
 
 </body>
 </html>
