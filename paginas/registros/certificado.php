@@ -39,7 +39,7 @@ if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
     </div>
 </form>
 
-<div name="certificado" class="border border-light p-4 rounded d-none d-lg-block d-print-block">
+<div name="certificado" class="border border-light p-4 rounded" id="certificado">
     <h3>Certificado de Garantia</h3>
     <div class="row mb-2">
         <div class="col-md-2 input-group">
@@ -58,7 +58,7 @@ if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
     <div class="row mb-2">
         <div class="col-md-4">
             <div class="input-group">
-                <span class="input-group-text">Veículo</span>
+                <span class=" input-group-text">Veículo</span>
                 <p name="fab_veiculo" class="form-control"><?php echo isset($dados["fab_veiculo"]) ? strtoupper($dados["fab_veiculo"]) : ''; ?></p>
                 <p name="mod_veiculo" class="form-control"><?php echo isset($dados["mod_veiculo"]) ? $dados["mod_veiculo"] : ''; ?></p>
             </div>

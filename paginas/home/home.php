@@ -1,6 +1,6 @@
 <h3>Página Principal</h3>
 
-<form method="POST" action="">
+<form class="d-print-none" method="POST" action="">
     <div class="row">
         
         <div class="col-md-4">
@@ -30,6 +30,7 @@
         <div class="col-md-2 align-self-end">
             <button class="btn btn-outline-success" type="submit" name="filtrar">Filtrar</button>
         </div>
+        <div class="col-md-2 align-self-end"><button class="btn btn-outline-primary" onclick="imprimirConsulta()">Imprimir Consulta</button></div>
     </div>
 </form>
 
@@ -48,12 +49,13 @@
                 <th>Status</th>
                 <th>NF Retorno</th>
                 <th>Valor venda</th>
+                <th class="d-print-none">Laudo</th>
             </tr>
         </thead>
         <tbody>
 
         <?php
-            $quantidade = 10;
+            $quantidade = 15;
             $pagina = (isset($_GET["pagina"]) ? (int)$_GET["pagina"] : 1);
             $inicio = ($quantidade * $pagina) - $quantidade;
 
@@ -73,7 +75,8 @@
                 DATE_FORMAT(data_saida, '%d/%m/%Y') AS data_saida,
                 upper(status) AS status,
                 nf_retorno,
-                valor_venda
+                valor_venda,
+                laudo
                 FROM registros
                 WHERE 1=1";
 
@@ -108,6 +111,18 @@
                 <td><?=$dados["status"] ?></td>
                 <td><?=$dados["nf_retorno"] ?></td>
                 <td>R$ <?=number_format($dados['valor_venda'], 2, ',', '.') ?></td>
+                <td class="text-center d-print-none">
+                
+                <?php 
+                    if ($dados["laudo"] == "" || !file_exists('./paginas/registros/laudos/'.$dados["laudo"])) {
+                    $laudo = "sem_laudo.jpg";
+                    } else {
+                        $laudo = $dados["laudo"];
+                    }
+                ?>
+                
+                <a class="btn btn-outline-warning btn-sm" href="./paginas/registros/laudos/<?=$laudo?>"><i class="bi bi-file-earmark-pdf"></i></a>
+            </td>
             </tr>
 
         <?php } ?>
@@ -115,3 +130,9 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    function imprimirConsulta() {
+        window.print();
+    }
+</script>

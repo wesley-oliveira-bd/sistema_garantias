@@ -7,6 +7,9 @@
     <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
     <input type="text" name="filtro_nfs">
     <button class="btn btn-outline-warning btn-sm" type="submit" name="nfs_a_emitir" value="1"><i class="bi bi-newspaper"></i> NFs a Emitir</button>
+
+    <button class="btn btn-outline-primary btn-sm" onclick="imprimirConsulta()">Imprimir Consulta</button>
+
 </form>
 
 <div class="tabela">
@@ -133,3 +136,9 @@
         echo "<li class='page-item'><a class='page-link' href=\"?menuop=relatorios&pagina=$totalPaginas\">Última página página</a></li>";
     ?>
 </ul>
+
+<script>
+    function imprimirConsulta() {
+        window.print();
+    }
+</script>

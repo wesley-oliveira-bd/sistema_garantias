@@ -118,11 +118,39 @@ if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
             <label class="form-label" for="status" name="status">Status: </label>
             <input class="form-control" type="text" name="status" id="status" value="<?=$dados["status"]?>">
         </div>
-        <div class="col-md-9 mb-3">
+        <div class="col-md-6">
             <label class="form-label" for="observ" name="observ">Observ.: </label>
             <input class="form-control" type="text" name="observ" id="observ" value="<?=$dados["observ"]?>">
         </div>
+
+        <div class="col-md-3 d-flex flex-column justify-content-end">
+            <?php 
+                if ($dados["laudo"] == "" || !file_exists('./paginas/registros/laudos/'.$dados["laudo"])) {
+                   $laudo = "sem_laudo.jpg";
+                } else {
+                    $laudo = $dados["laudo"];
+                }
+            ?>
+             <a href="./paginas/registros/laudos/<?=$laudo?>" class="btn btn-primary" target="_blank">Ver laudo</a>
+        </div>
+        
     </div>
+
+    
+        <div class="row">
+            <div class="col-md-6">
+                <form action="" method="post" id="form_upload_laudo" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <label for="arquivo" class="form-label">Selecione o arquivo</label>
+                    <div class="input-group">
+                        <input class="form-control" type="file" name="arquivo" id="arquivo">
+                        <input class="btn btn-secondary mb-3" type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+
     <div class="d-grid gap-2">
         <button class="btn btn-outline-success" type="submit">Salvar</button>
     </div>

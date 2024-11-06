@@ -3,18 +3,28 @@ body {
     color: white;
 }
 
-.tabela {
-    margin-top: 10px;
-}
+@media print {
+    /* Define o layout da página impressa para se ajustar ao da tela */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
-.bordered {
-    border: 2px solid #28a745; /* Altere a cor e espessura conforme desejado */
-    padding: 10px; /* Adicione um pouco de espaçamento interno */
-    border-radius: 5px; /* Deixe os cantos arredondados, se preferir */
-}
+    /* Remove margens e espaços extras para impressão */
+    .row, .col-md-6, .col-md-4, .col-md-2, .col-md-3 {
+        margin: 0;
+        padding: 0;
+    }
 
-.certificado {
-    border: 2px solid #fff; /* Altere a cor e a espessura da borda conforme desejar */
-    padding: 15px; /* Adicione um espaçamento interno para dar um visual melhor */
-    border-radius: 5px; /* Deixe a borda com cantos arredondados */
+    /* Oculta elementos de visualização que não devem aparecer na impressão */
+    .no-print {
+        display: none !important;
+    }
+
+    /* Define quebras de página após certas seções (opcional) */
+    .page-break {
+        page-break-after: always;
+    }
 }
