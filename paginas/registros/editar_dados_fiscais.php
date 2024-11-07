@@ -33,9 +33,11 @@ if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
 </header>
 
 <form method="POST" action="">
-    <label for="informar_id">Informe o ID: </label>
-    <input type="number" name="informar_id" id="informar_id">
-    <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
+    <div class="input-group">
+        <label for="informar_id">Informe o ID: </label>
+        <input type="number" name="informar_id" id="informar_id">
+        <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
+    </div>
 </form>
 
 <?php if (!empty($dados)): ?> <!-- Exibe o formulário somente se $dados estiver preenchido -->
@@ -116,44 +118,47 @@ if (isset($_POST['informar_id']) && !empty($_POST['informar_id'])) {
     <div class="row">
         <div class="col-md-3">
             <label class="form-label" for="status" name="status">Status: </label>
-            <input class="form-control" type="text" name="status" id="status" value="<?=$dados["status"]?>">
+            <input class="form-control mb-3" type="text" name="status" id="status" value="<?=$dados["status"]?>">
         </div>
         <div class="col-md-6">
             <label class="form-label" for="observ" name="observ">Observ.: </label>
             <input class="form-control" type="text" name="observ" id="observ" value="<?=$dados["observ"]?>">
         </div>
 
-        <div class="col-md-3 d-flex flex-column justify-content-end">
-            <?php 
-                if ($dados["laudo"] == "" || !file_exists('./paginas/registros/laudos/'.$dados["laudo"])) {
-                   $laudo = "sem_laudo.jpg";
-                } else {
-                    $laudo = $dados["laudo"];
-                }
-            ?>
-             <a href="./paginas/registros/laudos/<?=$laudo?>" class="btn btn-primary" target="_blank">Ver laudo</a>
-        </div>
+        
         
     </div>
 
-    
-        <div class="row">
-            <div class="col-md-6">
-                <form action="" method="post" id="form_upload_laudo" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?=$id?>">
-                    <label for="arquivo" class="form-label">Selecione o arquivo</label>
-                    <div class="input-group">
-                        <input class="form-control" type="file" name="arquivo" id="arquivo">
-                        <input class="btn btn-secondary mb-3" type="submit" value="Enviar">
-                    </div>
-                </form>
-            </div>
-        </div>
-    
-
     <div class="d-grid gap-2">
-        <button class="btn btn-outline-success" type="submit">Salvar</button>
+        <button name="btn_salvar" class="btn btn-outline-success mb-3" type="submit">Salvar</button>
     </div>
 
 </form>
+
+<div class="row d-flex align-items-baseline"> <!-- Alinha os itens no centro verticalmente -->
+    <!-- Coluna para o formulário de upload -->
+    <div class="col-md-6 align-self-center">
+        <form action="" method="post" id="form_upload_laudo" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?=$id?>">
+            <label for="arquivo" class="form-label">Anexar laudo</label>
+            <div class="input-group">
+                <input class="form-control" type="file" name="arquivo" id="arquivo">
+                <input class="btn btn-secondary" type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <!-- Coluna para o botão "Ver Laudo" -->
+    <div class="col-md-3 align-self-end"> <!-- Alinha o conteúdo verticalmente no centro -->
+        <?php 
+            if ($dados["laudo"] == "" || !file_exists('./paginas/registros/laudos/'.$dados["laudo"])) {
+               $laudo = "sem_laudo.jpg";
+            } else {
+                $laudo = $dados["laudo"];
+            }
+        ?>
+        <a href="./paginas/registros/laudos/<?=$laudo?>" class="btn btn-primary form-control" target="_blank">Ver laudo</a>
+    </div>
+</div>
+
 <?php endif; ?>

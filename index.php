@@ -37,7 +37,7 @@
                 </nav>
             </div>
         </header>
-        <main>
+        <main class="pt-7">
         
             <div class="container">
                 <?php
